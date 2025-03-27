@@ -1,4 +1,5 @@
 import { Component } from "../component.js";
+import { Dom } from "../services/dom.js";
 
 export class NavigationMenuComponent extends Component
 {
@@ -21,8 +22,8 @@ export class NavigationMenuComponent extends Component
     }
 
     connectedCallback() {
-        const container = document.createElement('div')
-        const dashboardLink = document.createElement('a')
+        const container = Dom.div()
+        const dashboardLink = Dom.a()
 
         dashboardLink.innerText = 'Dashboard'
 

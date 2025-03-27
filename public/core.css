@@ -2,39 +2,46 @@
     font-family: "Roboto", sans-serif;
 }
 
-html {
+html, body {
     height: 100%;
 }
 
 body {
-    height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column; 
 }
 
 #header {
-    height: 30px;
-    display: flex;
-    align-items: center;
     background-color: #95a5a6;
 }
 
-#headerContent {
-    margin-left: 10px;
+#logo {
+    background-color: firebrick;
 }
 
 #page {
-    display: flex;
     height: calc( 100vh - 30px);
 }
 
 #page #sideBar {
     width: 100px;
     background: #2c3e50;
-    flex: 1 0 auto;
 }
 
 #page #content {
     background: #ecf0f1;
-    flex: 5 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-5 {
+    flex: 5;
 }
 
