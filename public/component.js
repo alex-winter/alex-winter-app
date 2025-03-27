@@ -1,3 +1,5 @@
+import { Dom } from "./services/dom";
+
 export class Component extends HTMLElement
 {
     constructor () {
@@ -5,9 +7,8 @@ export class Component extends HTMLElement
         
         this.shadow = this.attachShadow({mode: 'open'})
 
-        const coreStyles = document.createElement('link');
-        coreStyles.rel = 'stylesheet';
-        coreStyles.href = '/core.css';
+        const coreStyles = Dom.stylesheet()
+        coreStyles.href = '/core.css'
 
         this.shadow.appendChild(coreStyles)
     }
@@ -16,7 +17,7 @@ export class Component extends HTMLElement
      * @param {string} css 
      */
     setStyles(css) {
-        const style = document.createElement('style')
+        const style = Dom.style()
         
         style.textContent = css
         

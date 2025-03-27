@@ -1,4 +1,5 @@
 import {Component} from '../component.js'
+import {Dom} from '../services/dom.js'
 
 export class WidgetCardComponent extends Component 
 {
@@ -14,7 +15,7 @@ export class WidgetCardComponent extends Component
     }
 
     connectedCallback() {
-        const container = document.createElement('div')
+        const container = Dom.div()
 
         this.shadow.appendChild(container)
     }
