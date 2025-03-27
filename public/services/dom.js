@@ -19,7 +19,11 @@ export class Dom {
         return document.createElement('div')
     }
 
-    static a() {
-        return document.createElement('a')
+    static a(textContent) {
+        const element = document.createElement('a')
+
+        element.textContent = textContent
+
+        return element
     }
 }

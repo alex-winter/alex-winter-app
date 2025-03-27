@@ -1,4 +1,4 @@
-import { Dom } from "./services/dom";
+import { Dom } from "./services/dom.js";
 
 export class Component extends HTMLElement
 {

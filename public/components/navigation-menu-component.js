@@ -23,11 +23,10 @@ export class NavigationMenuComponent extends Component
 
     connectedCallback() {
         const container = Dom.div()
-        const dashboardLink = Dom.a()
+        const dashboardLink = Dom.a('Dashboard')
+        const aboutLink = Dom.a('About Me')
 
-        dashboardLink.innerText = 'Dashboard'
-
-        container.appendChild(dashboardLink)
+        container.append(dashboardLink, aboutLink)
 
         this.shadow.appendChild(container)
     }
