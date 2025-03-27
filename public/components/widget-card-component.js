@@ -5,8 +5,8 @@ export class WidgetCardComponent extends Component
     constructor () {
         super()
 
-        this.setStyles(`
-            .widget-card {
+        this.setStyles(/*css*/`
+            :host {
                 background-color: aliceblue;
                 padding: 20px;
             }    
@@ -15,8 +15,6 @@ export class WidgetCardComponent extends Component
 
     connectedCallback() {
         const container = document.createElement('div')
-        
-        container.classList.add('widget-card')
 
         this.shadow.appendChild(container)
     }

@@ -1,0 +1,33 @@
+import { Component } from "../component.js";
+
+export class NavigationMenuComponent extends Component
+{
+    constructor () {
+        super()
+
+        this.setStyles(/*css*/`
+            :host {
+                background-color: yellow;
+                width: 100%;
+            }
+
+            a {
+                box-sizing: border-box;
+                display: block;
+                padding: 4px;
+                width: 100%;
+            }
+        `)
+    }
+
+    connectedCallback() {
+        const container = document.createElement('div')
+        const dashboardLink = document.createElement('a')
+
+        dashboardLink.innerText = 'Dashboard'
+
+        container.appendChild(dashboardLink)
+
+        this.shadow.appendChild(container)
+    }
+}
