@@ -1,5 +1,38 @@
-body {
-    margin:0;
-    background-color: black;
+html {
+    height: 100%;
 }
 
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Ubuntu;
+    background: linear-gradient(#b3ffab, #67fffc);
+}
+
+
+#header {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: #bbbbbb;
+}
+
+#headerContent {
+    margin-left: 10px;
+}
+
+#page {
+    display: flex;
+    height: calc( 100vh - 30px);
+}
+
+#page #sideBar {
+    width: 100px;
+    background: red;
+    flex: 1 0 auto;
+}
+
+#page #content {
+    background: blue;
+    flex: 5 0 auto;
+}
