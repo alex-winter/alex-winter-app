@@ -4,6 +4,12 @@ export class Component extends HTMLElement
         super()
         
         this.shadow = this.attachShadow({mode: 'open'})
+
+        const coreStyles = document.createElement('link');
+        coreStyles.rel = 'stylesheet';
+        coreStyles.href = '/core.css';
+
+        this.shadow.appendChild(coreStyles)
     }
 
     /**
