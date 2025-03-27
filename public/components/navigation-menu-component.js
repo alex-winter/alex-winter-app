@@ -26,6 +26,8 @@ export class NavigationMenuComponent extends Component
         const dashboardLink = Dom.a('Dashboard')
         const aboutLink = Dom.a('About Me')
 
+        aboutLink.href = '/about'
+
         container.append(dashboardLink, aboutLink)
 
         this.shadow.appendChild(container)
