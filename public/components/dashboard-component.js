@@ -17,7 +17,7 @@ export class DashboardComponent extends Component
     template() {
         return /*html*/`
             <div>
-                <h1>Dashboard</h1>
+                <h1 class="py-2">Dashboard</h1>
                 <div class="flex gap-2">
                     <div class="flex-1">
                         <widget-card-component>

@@ -24,6 +24,14 @@ export class DateTimeComponent extends Component
         });
     }
 
+    styles() {
+        return /*css*/`
+            .time {
+                font-size: 2em;
+            }
+        `
+    }
+
     template () {
         return /*html*/`
             <div>
