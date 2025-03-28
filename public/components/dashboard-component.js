@@ -20,7 +20,9 @@ export class DashboardComponent extends Component
                 <h1>Dashboard</h1>
                 <div class="flex gap-2">
                     <div class="flex-1">
-                        <widget-card-component></widget-card-component>
+                        <widget-card-component>
+                            <date-time-component></date-time-component>
+                        </widget-card-component>
                     </div>
                     <div class="flex-1">
                         <widget-card-component></widget-card-component>

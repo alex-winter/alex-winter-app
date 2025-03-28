@@ -10,16 +10,6 @@ export class Component extends HTMLElement
         const coreStyles = Dom.stylesheet('/core.css')
 
         this.shadow.appendChild(coreStyles)
-
-        const style = Dom.style(this.styles())
-        
-        this.shadow.appendChild(style)
-
-        this.shadow.appendChild(
-            document.createRange().createContextualFragment(
-                this.template()
-            )
-        )
     }
 
     /**
@@ -48,6 +38,16 @@ export class Component extends HTMLElement
     } 
 
     connectedCallback() {
+        const style = Dom.style(this.styles())
+        
+        this.shadow.appendChild(style)
+
+        this.shadow.appendChild(
+            document.createRange().createContextualFragment(
+                this.template()
+            )
+        )
+        
         this.events()
     }
 

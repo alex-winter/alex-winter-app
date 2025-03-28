@@ -13,6 +13,7 @@ export class WidgetCardComponent extends Component
                 background-color: white;
                 padding: 20px;
                 border-radius: 4px;
+                border-top: 2px solid #1abc9c;
             } 
         `
     }

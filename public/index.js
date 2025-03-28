@@ -3,11 +3,13 @@ import { NavigationMenuComponent } from "./components/navigation-menu-component.
 import { WidgetCardComponent } from "./components/widget-card-component.js"
 import { AboutMeComponent } from './components/about-me-component.js'
 import { DashboardComponent } from './components/dashboard-component.js'
+import { DateTimeComponent } from './components/date-time-component.js'
 
 NavigationMenuComponent.load()
 WidgetCardComponent.load()
 AboutMeComponent.load()
 DashboardComponent.load()
+DateTimeComponent.load()
 
 const router = new Router({
     '/about': AboutMeComponent,
