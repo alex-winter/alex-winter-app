@@ -89,6 +89,10 @@ body {
     padding: 8px;
 }
 
+.mt-3 {
+    margin-top: 12px;
+}
+
 .mx-1 {
     margin-left: 4px;
     margin-right: 4px;
