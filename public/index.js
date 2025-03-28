@@ -2,16 +2,19 @@ import { Router } from './services/router.js'
 import { NavigationMenuComponent } from "./components/navigation-menu-component.js"
 import { WidgetCardComponent } from "./components/widget-card-component.js"
 import { AboutMeComponent } from './components/about-me-component.js'
+import { DashboardComponent } from './components/dashboard-component.js'
 
 NavigationMenuComponent.load()
 WidgetCardComponent.load()
 AboutMeComponent.load()
+DashboardComponent.load()
 
 const router = new Router({
     '/about': AboutMeComponent,
+    '/dashboard': DashboardComponent,
 })
 
-document.querySelectorAll('nav a').forEach(link => {
+document.querySelectorAll('[href]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault()
         router.navigateTo(link.getAttribute('href'))

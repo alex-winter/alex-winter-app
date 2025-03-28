@@ -5,8 +5,10 @@ export class NavigationMenuComponent extends Component
 {
     constructor () {
         super()
+    }
 
-        this.setStyles(/*css*/`
+    styles() {
+        return /*css*/`
             :host {
                 background-color: yellow;
                 width: 100%;
@@ -18,18 +20,15 @@ export class NavigationMenuComponent extends Component
                 padding: 4px;
                 width: 100%;
             }
-        `)
+        `
     }
 
-    connectedCallback() {
-        const container = Dom.div()
-        const dashboardLink = Dom.a('Dashboard')
-        const aboutLink = Dom.a('About Me')
-
-        aboutLink.href = '/about'
-
-        container.append(dashboardLink, aboutLink)
-
-        this.shadow.appendChild(container)
+    template() {
+        return /*html*/`
+            <div>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/about">About Me</a>
+            </div>
+        `
     }
 }

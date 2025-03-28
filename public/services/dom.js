@@ -14,16 +14,4 @@ export class Dom {
     static style() {
         return document.createElement('style')
     }
-
-    static div() {
-        return document.createElement('div')
-    }
-
-    static a(textContent) {
-        const element = document.createElement('a')
-
-        element.textContent = textContent
-
-        return element
-    }
 }

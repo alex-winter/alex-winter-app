@@ -7,11 +7,9 @@ export class AboutMeComponent extends Component
         super()
     }
 
-    connectedCallback() {
-        const container = Dom.div()
-
-        container.innerText = 'About'
-
-        this.shadow.appendChild(container)
+    template () {
+        return /*html*/`
+            <h1>About Me</h1>
+        `
     }
 }
