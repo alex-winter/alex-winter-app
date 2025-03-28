@@ -1,5 +1,4 @@
 import { Component } from "../component.js";
-import { Dom } from "../services/dom.js";
 
 export class NavigationMenuComponent extends Component
 {
@@ -28,7 +27,14 @@ export class NavigationMenuComponent extends Component
             <div>
                 <a href="/dashboard">Dashboard</a>
                 <a href="/about">About Me</a>
+                <a href="" class="alert-test">test alert event</a>
             </div>
         `
+    }
+
+    events() {
+        this.shadow.querySelector('.alert-test')?.addEventListener('click', () => {
+            alert('test alert event')
+        })
     }
 }

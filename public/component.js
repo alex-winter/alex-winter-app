@@ -33,6 +33,10 @@ export class Component extends HTMLElement
         throw new Error(`${this.constructor.name} missing template`)
     }
 
+    connectedCallback() {
+        this.events()
+    }
+
     /**
      * @return void
      */
