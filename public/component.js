@@ -33,6 +33,20 @@ export class Component extends HTMLElement
         throw new Error(`${this.constructor.name} missing template`)
     }
 
+    events() {
+
+    }
+
+    /**
+     * @param {string} query 
+     * @param {(event) => void} event 
+     */
+    click(query, event) {
+        this.shadow.querySelectorAll(query).forEach(element => {
+            element.addEventListener('click', event)
+        })
+    } 
+
     connectedCallback() {
         this.events()
     }

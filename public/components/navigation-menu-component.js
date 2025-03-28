@@ -33,7 +33,7 @@ export class NavigationMenuComponent extends Component
     }
 
     events() {
-        this.shadow.querySelector('.alert-test')?.addEventListener('click', () => {
+        this.click('.alert-test', () => {
             alert('test alert event')
         })
     }
