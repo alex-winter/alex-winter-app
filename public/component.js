@@ -30,8 +30,14 @@ export class Component extends HTMLElement
     static load()
     {
         customElements.define(
-            this.name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
+            this.getCustomElementName(),
             this
         )
+    }
+
+    static getCustomElementName() {
+        return this.name
+            .replace(/([a-z])([A-Z])/g, '$1-$2')
+            .toLowerCase()
     }
 }
