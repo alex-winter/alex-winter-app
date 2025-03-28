@@ -10,7 +10,7 @@ export class WidgetCardComponent extends Component
         return /*css*/`
             :host {
                 display: block;
-                background-color: green;
+                background-color: white;
                 padding: 20px;
                 border-radius: 4px;
             } 

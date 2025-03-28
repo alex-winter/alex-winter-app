@@ -76,8 +76,16 @@ body {
     gap: 4px;
 }
 
+.gap-2 {
+    gap: 8px;
+}
+
 .p-1 {
     padding: 4px;
+}
+
+.p-2 {
+    padding: 8px;
 }
 
 .mx-1 {
