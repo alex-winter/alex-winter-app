@@ -3,15 +3,20 @@ export class Dom {
         throw new Error('Dom is a static utility class and cannot be instantiated.')
     }
 
-    static stylesheet() {
+    static stylesheet(href) {
         const element = document.createElement('link')
 
         element.rel = 'stylesheet'
+        element.href = href
 
         return element
     }
 
-    static style() {
-        return document.createElement('style')
+    static style(css) {
+        const element = document.createElement('style')
+
+        element.textContent = css
+
+        return element
     }
 }

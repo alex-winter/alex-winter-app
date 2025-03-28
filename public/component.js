@@ -7,14 +7,11 @@ export class Component extends HTMLElement
         
         this.shadow = this.attachShadow({mode: 'open'})
 
-        const coreStyles = Dom.stylesheet()
-        coreStyles.href = '/core.css'
+        const coreStyles = Dom.stylesheet('/core.css')
 
         this.shadow.appendChild(coreStyles)
 
-        const style = Dom.style()
-        
-        style.textContent = this.styles()
+        const style = Dom.style(this.styles())
         
         this.shadow.appendChild(style)
 
