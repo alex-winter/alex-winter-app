@@ -16,10 +16,20 @@ export class DashboardComponent extends Component
 
     template() {
         return /*html*/`
-            <p>Hello</p>
-            <widget-card-component>
-                <navigation-menu-component></navigation-menu-component>
-            </widget-card-component>
+            <div>
+                <h1>Dashboard</h1>
+                <div class="flex gap-1 mx-1">
+                    <div class="flex-1">
+                        <widget-card-component></widget-card-component>
+                    </div>
+                    <div class="flex-1">
+                        <widget-card-component></widget-card-component>
+                    </div>
+                    <div class="flex-1">
+                        <widget-card-component></widget-card-component>
+                    </div>
+                </div>
+            </div>
         `
     }
 }
