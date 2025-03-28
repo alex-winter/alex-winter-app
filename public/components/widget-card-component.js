@@ -15,7 +15,7 @@ export class WidgetCardComponent extends Component
         `
     }
 
-    connectedCallback() {
+    template() {
         return /*html*/`
             <div></div>
         `

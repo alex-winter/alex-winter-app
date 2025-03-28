@@ -4,12 +4,14 @@ export class DashboardComponent extends Component
 {
     constructor () {
         super()
+    }
 
-        this.setStyles(/*css*/`
+    styles() {
+        return /*css*/`
             :root {
 
             }    
-        `)
+        `
     }
 
     template() {
