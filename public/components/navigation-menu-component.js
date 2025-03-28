@@ -16,15 +16,31 @@ export class NavigationMenuComponent extends Component
             a {
                 box-sizing: border-box;
                 display: block;
-                padding: 4px;
+                padding: 8px;
                 width: 100%;
+                color: #ecf0f1;
+                text-decoration: none;
+                margin-bottom: 4px;
+            }
+
+            a:hover {
+                color: #1abc9c;
+            }
+
+            a.active {
+                background-color: #1abc9c;
+            }
+
+            a.active:hover {
+                background-color: #1abc9c;
+                color: #ecf0f1;
             }
         `
     }
 
     template() {
         return /*html*/`
-            <div>
+            <div class="my-1">
                 <a href="/dashboard">Dashboard</a>
                 <a href="/about">About Me</a>
                 <a href="" class="alert-test">test alert event</a>
@@ -35,6 +51,12 @@ export class NavigationMenuComponent extends Component
     events() {
         this.click('.alert-test', () => {
             alert('test alert event')
+        })
+
+        this.shadow.querySelectorAll('a').forEach(a => {
+            if (a.getAttribute('href') === window.location.pathname) {
+                a.classList.add('active')
+            }
         })
     }
 }
