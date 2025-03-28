@@ -17,6 +17,9 @@ export class DashboardComponent extends Component
     template() {
         return /*html*/`
             <p>Hello</p>
+            <widget-card-component>
+                <navigation-menu-component></navigation-menu-component>
+            </widget-card-component>
         `
     }
 }

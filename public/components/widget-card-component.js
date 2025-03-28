@@ -9,15 +9,19 @@ export class WidgetCardComponent extends Component
     styles() {
         return /*css*/`
             :host {
-                background-color: aliceblue;
+                display: block;
+                background-color: green;
                 padding: 20px;
+                border-radius: 4px;
             } 
         `
     }
 
     template() {
         return /*html*/`
-            <div></div>
+            <div>
+                <slot></slot>
+            </div>
         `
     }
 }
