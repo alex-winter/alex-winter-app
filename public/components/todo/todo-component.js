@@ -5,6 +5,8 @@ export class TodoComponent extends Component
 {
     constructor () {
         super()
+
+        DataRepository.fetchTodoItems()
     }
 
     styles () {
@@ -15,7 +17,7 @@ export class TodoComponent extends Component
 
     template () {
         const items = DataRepository.getTodoItems().map(item => /*html*/`
-            <todo-row-component data-item="${this.propEncode(item)}"></todo-row-component>
+            <todo-row-component data-uuid="${item.dataUuid}" data-item="${this.propEncode(item)}"></todo-row-component>
         `).join('')
 
         return /*html*/`

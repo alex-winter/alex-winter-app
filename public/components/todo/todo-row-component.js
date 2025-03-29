@@ -1,4 +1,5 @@
 import { Component } from "../../component.js";
+import { DataRepository } from "../../services/data-repository.js";
 
 export class TodoRowComponent extends Component
 {
@@ -39,7 +40,8 @@ export class TodoRowComponent extends Component
 
     events() {
         this.click('delete-button-component', () => {
-            alert('click delete')
+            DataRepository.removeTodoItem(this.props.item.dataUuid)
+            this.remove()
         })
     }
 }

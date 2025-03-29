@@ -1,4 +1,6 @@
 import { Dom } from "./services/dom.js";
+import { isJSON } from "./services/isJson.js";
+import { isURLEncoded } from "./services/isURLEncoded.js";
 
 export class Component extends HTMLElement
 {
@@ -13,13 +15,19 @@ export class Component extends HTMLElement
         const coreStyles = Dom.stylesheet('/core.css')
 
         this.shadow.appendChild(coreStyles)
-
+        
         Object.keys(this.dataset).forEach(key => {
-            this.props[key] = JSON.parse(
-                decodeURIComponent(
-                    this.dataset[key] ?? ''
-                )
-            )
+            let value = this.dataset[key] ?? ''
+        
+            if (isURLEncoded(value)) {
+                value = decodeURIComponent(value)
+            }
+        
+            if (isJSON(value)) {
+                value = JSON.parse(value)
+            }
+        
+            this.props[key] = value
         })
     }
 
