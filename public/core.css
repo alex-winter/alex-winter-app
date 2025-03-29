@@ -1,7 +1,9 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
 @import './css/base.css';
 @import './css/flex.css';
 @import './css/typography.css';
 @import './css/spacing.css';
+@import './css/buttons.css';
 
 #header {
     background-color: #95a5a6;
