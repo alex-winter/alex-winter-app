@@ -18,8 +18,6 @@ const router = new Router({
     '/': DashboardComponent,
     
     '/about': AboutMeComponent,
-    
-    '/dashboard': DashboardComponent,
 
 })
 

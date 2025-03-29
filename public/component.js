@@ -2,6 +2,8 @@ import { Dom } from "./services/dom.js";
 
 export class Component extends HTMLElement
 {
+    props = {}
+
     constructor () {
         super()
         
@@ -10,6 +12,14 @@ export class Component extends HTMLElement
         const coreStyles = Dom.stylesheet('/core.css')
 
         this.shadow.appendChild(coreStyles)
+
+        Object.keys(this.dataset).forEach(key => {
+            this.props[key] = JSON.parse(
+                decodeURIComponent(
+                    this.dataset[key] ?? ''
+                )
+            )
+        })
     }
 
     /**

@@ -2,8 +2,14 @@ import { Component } from "../component.js";
 
 export class DashboardComponent extends Component
 {
+    todoData = []
+
     constructor () {
         super()
+
+        this.todoData = [
+            {name: "Get shopping"}
+        ]
     }
 
     styles() {
@@ -15,6 +21,8 @@ export class DashboardComponent extends Component
     }
 
     template() {
+        const todoData = encodeURIComponent(JSON.stringify(this.todoData))
+
         return /*html*/`
             <div>
                 <h1 class="py-2">Dashboard</h1>
@@ -26,7 +34,7 @@ export class DashboardComponent extends Component
                     </div>
                     <div class="flex-2">
                         <widget-card-component>
-                            <todo-component></todo-component>
+                            <todo-component data-todo-items="${todoData}"></todo-component>
                         </widget-card-component>
                     </div>
                 </div>

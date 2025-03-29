@@ -41,7 +41,7 @@ export class NavigationMenuComponent extends Component
     template() {
         return /*html*/`
             <div>
-                <a href="/dashboard">Dashboard</a>
+                <a href="/">Dashboard</a>
                 <a href="/about">About Me</a>
                 <a href="" class="alert-test">test alert event</a>
             </div>
