@@ -42,10 +42,22 @@ export class Component extends HTMLElement
      * @param {(event) => void} event 
      */
     click(query, event) {
-        this.shadow.querySelectorAll(query).forEach(element => {
-            element.addEventListener('click', event)
-        })
+        this.attachEvents('click', query, event)
     } 
+
+    /**
+     * @param {string} query 
+     * @param {(event) => void} event 
+     */
+    keyup(query, event) {
+        this.attachEvents('keyup', query, event)
+    } 
+
+    attachEvents (eventKey, query, event) {
+        this.shadow.querySelectorAll(query).forEach(element => {
+            element.addEventListener(eventKey, event)
+        })
+    }
 
     connectedCallback() {
         const style = Dom.style(this.styles())
