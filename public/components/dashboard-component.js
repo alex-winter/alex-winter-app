@@ -6,10 +6,6 @@ export class DashboardComponent extends Component
 
     constructor () {
         super()
-
-        this.todoData = [
-            {name: "Get shopping"}
-        ]
     }
 
     styles() {
@@ -21,8 +17,6 @@ export class DashboardComponent extends Component
     }
 
     template() {
-        const todoData = this.propEncode(this.todoData)
-
         return /*html*/`
             <div>
                 <h1 class="py-2">Dashboard</h1>
@@ -34,7 +28,7 @@ export class DashboardComponent extends Component
                     </div>
                     <div class="flex-2">
                         <widget-card-component>
-                            <todo-component data-todo-items="${todoData}"></todo-component>
+                            <todo-component></todo-component>
                         </widget-card-component>
                     </div>
                 </div>

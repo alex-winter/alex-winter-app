@@ -1,4 +1,5 @@
 import { Component } from "../../component.js";
+import { DataRepository } from "../../services/data-repository.js";
 
 export class TodoComponent extends Component
 {
@@ -13,12 +14,9 @@ export class TodoComponent extends Component
     }
 
     template () {
-        const items = this.props.todoItems.map(item => {
-            const itemProp = this.propEncode(item)
-            return /*html*/`
-                <todo-row-component data-item="${itemProp}"></todo-row-component>
-            `
-        }).join('')
+        const items = DataRepository.getTodoItems().map(item => /*html*/`
+            <todo-row-component data-item="${this.propEncode(item)}"></todo-row-component>
+        `).join('')
 
         return /*html*/`
             <div>
@@ -30,5 +28,14 @@ export class TodoComponent extends Component
                 </div>
             </div>
         `
+    }
+
+    events () {
+        this.keyUpEnter('input', (e) => {
+            if (e.key === 'Enter') {
+                DataRepository.addTodoItem({name: e.target.value})
+                this.refresh()
+            }
+        })
     }
 }
