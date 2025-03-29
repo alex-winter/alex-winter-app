@@ -3,12 +3,6 @@ import { DataRepository } from "../../services/data-repository.js";
 
 export class TodoComponent extends Component
 {
-    constructor () {
-        super()
-
-        DataRepository.fetchTodoItems()
-    }
-
     styles () {
         return /*css*/`
            
@@ -19,6 +13,10 @@ export class TodoComponent extends Component
         return /*html*/`
             <todo-row-component data-uuid="${item.dataUuid}" data-item="${this.propEncode(item)}"></todo-row-component>
         `
+    }
+
+    async before() {
+        await DataRepository.fetchTodoItems()
     }
 
     template () {

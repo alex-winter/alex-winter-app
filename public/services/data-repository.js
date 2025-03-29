@@ -14,11 +14,9 @@ export class DataRepository
         return items.map(item => ({dataUuid: generateUUID(), ...item}))
     }
 
-    static fetchTodoItems() {
-        const source = [
-            {name: 'Make Breakfast'},
-            {name: 'Clean house'},
-        ]
+    static async fetchTodoItems() {
+        const response = await fetch('/api/todo')
+        const source = await response.json()
 
         dataRepository.todoItems = DataRepository.map(source)
     }

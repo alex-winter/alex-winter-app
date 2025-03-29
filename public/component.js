@@ -94,7 +94,13 @@ export class Component extends HTMLElement
         })
     }
 
+    async before () {
+
+    }
+
     connectedCallback() {
+        this.before().then(() => {
+
         const style = Dom.style(this.styles())
         
         this.shadow.appendChild(style)
@@ -108,6 +114,7 @@ export class Component extends HTMLElement
         )
         
         this.events()
+        })
     }
 
     createFragment() {
