@@ -28,10 +28,14 @@ export class DataRepository
     }
 
     static addTodoItem(item) {
-        return dataRepository.todoItems.push({
+        const newItem = {
             dataUuid: generateUUID(), 
             ...item
-        })
+        }
+
+        dataRepository.todoItems.push(newItem)
+
+        return newItem
     }
 
     static removeTodoItem(dataUuid) {

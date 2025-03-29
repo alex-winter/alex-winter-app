@@ -15,10 +15,14 @@ export class TodoComponent extends Component
         `
     }
 
-    template () {
-        const items = DataRepository.getTodoItems().map(item => /*html*/`
+    itemToComponent (item) {
+        return /*html*/`
             <todo-row-component data-uuid="${item.dataUuid}" data-item="${this.propEncode(item)}"></todo-row-component>
-        `).join('')
+        `
+    }
+
+    template () {
+        const items = DataRepository.getTodoItems().map(this.itemToComponent.bind(this)).join('')
 
         return /*html*/`
             <div>
@@ -34,10 +38,14 @@ export class TodoComponent extends Component
 
     events () {
         this.keyUpEnter('input', (e) => {
-            if (e.key === 'Enter') {
-                DataRepository.addTodoItem({name: e.target.value})
-                this.refresh()
-            }
+            const newItem = DataRepository.addTodoItem({name: e.target.value})
+
+            this.shadow.querySelector('.listing').insertAdjacentHTML(
+                'beforeend',
+                this.itemToComponent(newItem)
+            )
+
+            e.target.value = ''
         })
     }
 }
