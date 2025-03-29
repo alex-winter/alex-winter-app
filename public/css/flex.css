@@ -3,6 +3,11 @@
     flex-direction: row;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-1 {
     flex: 1 0 0;
 }
@@ -29,4 +34,12 @@
 
 .justify-end {
     justify-content: end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
 }
