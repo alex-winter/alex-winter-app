@@ -24,7 +24,7 @@ export class TodoRowComponent extends Component
         const data = this.props.item
 
         return /*html*/`
-            <div class="row flex-row p-3 gap-1">
+            <div class="row flex-row p-3 gap-1 animation-fade-up">
                 <div class="flex-column justify-center">
                     <i class="fa-solid fa-clipboard-list"></i>
                 </div>

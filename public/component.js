@@ -54,6 +54,10 @@ export class Component extends HTMLElement
 
     }
 
+    query(query) {
+        return this.shadow.querySelector(query)
+    }
+
     /**
      * @param {string} query 
      * @param {(event) => void} event 

@@ -5,6 +5,23 @@
 @import './css/spacing.css';
 @import './css/buttons.css';
 
+.animation-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #header {
     background-color: #95a5a6;
 }
