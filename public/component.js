@@ -3,6 +3,7 @@ import { Dom } from "./services/dom.js";
 export class Component extends HTMLElement
 {
     props = {}
+    rootElementTagName = null
 
     constructor () {
         super()
@@ -20,6 +21,14 @@ export class Component extends HTMLElement
                 )
             )
         })
+    }
+
+    propEncode(data) {
+        return encodeURIComponent(
+            JSON.stringify(
+                data
+            )
+        )
     }
 
     /**
@@ -64,13 +73,28 @@ export class Component extends HTMLElement
         
         this.shadow.appendChild(style)
 
+        const fragment = this.createFragment()
+
+        this.rootElementTagName = fragment.firstElementChild.tagName.toLowerCase()
+
         this.shadow.appendChild(
-            document.createRange().createContextualFragment(
-                this.template()
-            )
+            fragment
         )
         
         this.events()
+    }
+
+    createFragment() {
+        return document.createRange().createContextualFragment(
+            this.template()
+        )
+    }
+
+    refresh() {
+        this.shadow.replaceChild(
+            this.createFragment(),
+            this.shadow.querySelector(this.rootElementTagName)
+        )
     }
 
     /**

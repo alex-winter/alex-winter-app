@@ -21,7 +21,7 @@ export class DashboardComponent extends Component
     }
 
     template() {
-        const todoData = encodeURIComponent(JSON.stringify(this.todoData))
+        const todoData = this.propEncode(this.todoData)
 
         return /*html*/`
             <div>

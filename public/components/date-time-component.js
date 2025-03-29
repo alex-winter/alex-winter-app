@@ -4,7 +4,17 @@ export class DateTimeComponent extends Component
 {
     constructor () {
         super()
+    }
 
+    styles() {
+        return /*css*/`
+            .time {
+                font-size: 2em;
+            }
+        `
+    }
+
+    template () {
         const now = new Date();
 
         // Format time as HH:MM:SS AM/PM
@@ -22,22 +32,18 @@ export class DateTimeComponent extends Component
             month: 'long', 
             day: 'numeric'
         });
-    }
-
-    styles() {
-        return /*css*/`
-            .time {
-                font-size: 2em;
-            }
-        `
-    }
-
-    template () {
+        
         return /*html*/`
             <div>
                 <p class="time">${this.formattedTime}</p>
                 <p class="date">${this.formattedDate}</p>
             </div>
         `
+    }
+
+    events () {
+        setInterval(() => {
+            this.refresh()
+        }, 1000)
     }
 }
