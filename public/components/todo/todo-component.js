@@ -38,8 +38,10 @@ export class TodoComponent extends Component
         this.keyUpEnter('input', (e) => {
             const newItem = DataRepository.addTodoItem({name: e.target.value})
 
-            this.query('.listing').insertAdjacentHTML(
-                'beforeend',
+            DataRepository.persistTodoItem()
+
+            this.appendTemplate(
+                this.query('.listing'),
                 this.itemToComponent(newItem)
             )
 

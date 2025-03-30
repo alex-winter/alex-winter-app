@@ -54,7 +54,9 @@ export class ModalComponent extends Component
 
     events () {
         this.click('.modal-container', (e) => {
-            e.target.remove()
+            if (e.target === e.currentTarget) {
+                e.target.remove()
+            }
         })
     }
 }
