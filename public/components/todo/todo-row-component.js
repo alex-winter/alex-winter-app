@@ -31,7 +31,8 @@ export class TodoRowComponent extends Component
                 <div class="flex-2 flex-column justify-center name-container">
                     <p>${data.name}</p>
                 </div>
-                <div class="flex-1 flex-row align-center justify-end">
+                <div class="flex-1 flex-row align-center justify-end gap-2">
+                    <button class="button warning"><i class="fa-solid fa-pen"></i></button>
                     <delete-button-component></delete-button-component>
                 </div>
             </div>
