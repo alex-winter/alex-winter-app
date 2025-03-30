@@ -130,6 +130,10 @@ export class Component extends HTMLElement
         )
     }
 
+    appendTemplate(element, template) {
+        element.insertAdjacentHTML('beforeend', template)
+    }
+
     /**
      * @return void
      */

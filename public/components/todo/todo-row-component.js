@@ -32,7 +32,7 @@ export class TodoRowComponent extends Component
                     <p>${data.name}</p>
                 </div>
                 <div class="flex-1 flex-row align-center justify-end gap-2">
-                    <button class="button warning"><i class="fa-solid fa-pen"></i></button>
+                    <button id="edit" class="button warning"><i class="fa-solid fa-pen"></i></button>
                     <delete-button-component></delete-button-component>
                 </div>
             </div>
@@ -43,6 +43,17 @@ export class TodoRowComponent extends Component
         this.click('delete-button-component', () => {
             DataRepository.removeTodoItem(this.props.item.dataUuid)
             this.remove()
+        })
+
+        this.click('#edit', () => {
+            this.appendTemplate(
+                document.body,
+                /*html*/`
+                    <modal-component>
+                        <todo-item-edit-form-component></todo-item-edit-form-component>
+                    </modal-component>
+                `
+            )
         })
     }
 }
