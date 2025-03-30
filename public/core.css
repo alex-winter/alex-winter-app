@@ -6,6 +6,14 @@
 @import './css/buttons.css';
 @import './css/animations.css';
 
+input {
+    outline: 0;
+    background-color: white;
+    border: 1px solid #34495e;
+    padding: 4px;
+    font-size: 1.2em;
+}
+
 #header {
     background-color: #95a5a6;
 }
