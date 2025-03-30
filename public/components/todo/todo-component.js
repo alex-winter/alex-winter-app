@@ -11,7 +11,10 @@ export class TodoComponent extends Component
 
     itemToComponent (item) {
         return /*html*/`
-            <todo-row-component data-uuid="${item.dataUuid}" data-item="${this.propEncode(item)}"></todo-row-component>
+            <todo-row-component 
+                data-uuid="${item.dataUuid}" 
+                data-item="${this.propEncode(item)}"
+            ></todo-row-component>
         `
     }
 
@@ -20,7 +23,9 @@ export class TodoComponent extends Component
     }
 
     template () {
-        const items = DataRepository.getTodoItems().map(this.itemToComponent.bind(this)).join('')
+        const items = DataRepository.getTodoItems()
+            .map(this.itemToComponent.bind(this))
+            .join('')
 
         return /*html*/`
             <div>
