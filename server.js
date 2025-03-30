@@ -10,7 +10,8 @@ const PORT = 3000
 app.get('/api/todo', (req, res) => {
   const todos = [
       { id: 1, name: 'Make Breakfast', completed: false },
-      { id: 2, name: 'Clean House', completed: true }
+      { id: 2, name: 'Clean House', completed: true },
+      { id: 3, name: 'Eat Lunch', completed: true },
   ];
 
   res.json(todos);

@@ -21,6 +21,19 @@ export class DataRepository
         dataRepository.todoItems = DataRepository.map(source)
     }
 
+    static async persistTodoItem(item) {
+        const response = await fetch('/api/todo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+        const source = await response.json()
+
+        dataRepository.todoItems = DataRepository.map(source)
+    }
+
     static getTodoItems() {
         return dataRepository.todoItems
     }
