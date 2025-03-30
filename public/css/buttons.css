@@ -26,3 +26,11 @@
 .button.warning:hover {
     background-color: #cfa80c;
 }
+
+.button.primary {
+    background-color: #1abc9c;
+}
+
+.button.primary:hover {
+    background-color: #12977d;
+}

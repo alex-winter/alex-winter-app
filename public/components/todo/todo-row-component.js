@@ -50,7 +50,19 @@ export class TodoRowComponent extends Component
                 document.body,
                 /*html*/`
                     <modal-component>
-                        <todo-item-edit-form-component></todo-item-edit-form-component>
+                        <modal-header-content-footer-component>   
+                            
+                            <div slot="header">
+                                Edit ${this.props.item.name}
+                            </div>
+
+                            <todo-item-edit-form-component slot="content"></todo-item-edit-form-component>
+
+                            <div slot="footer">
+                                <button class="primary button" slot="footer">Save</button>
+                            </div>
+
+                        </modal-header-content-footer-component>
                     </modal-component>
                 `
             )
