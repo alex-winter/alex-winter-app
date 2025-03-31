@@ -38,6 +38,7 @@ export class TodoRowComponent extends Component
     events() {
         this.click('delete-button-component', () => {
             DataRepository.removeTodoItem(this.props.item.dataUuid)
+           
             this.remove()
         })
 

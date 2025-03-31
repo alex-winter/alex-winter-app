@@ -15,10 +15,10 @@ export class Component extends HTMLElement
         const coreStyles = Dom.stylesheet('/core.css')
 
         this.shadow.appendChild(coreStyles)
-        
+
         Object.keys(this.dataset).forEach(key => {
             let value = this.dataset[key] ?? ''
-        
+
             if (isURLEncoded(value)) {
                 value = decodeURIComponent(value)
             }
@@ -101,19 +101,19 @@ export class Component extends HTMLElement
     connectedCallback() {
         this.before().then(() => {
 
-        const style = Dom.style(this.styles())
-        
-        this.shadow.appendChild(style)
+            const style = Dom.style(this.styles())
+            
+            this.shadow.appendChild(style)
 
-        const fragment = this.createFragment()
+            const fragment = this.createFragment()
 
-        this.rootElementTagName = fragment.firstElementChild.tagName.toLowerCase()
+            this.rootElementTagName = fragment.firstElementChild.tagName.toLowerCase()
 
-        this.shadow.appendChild(
-            fragment
-        )
-        
-        this.events()
+            this.shadow.appendChild(
+                fragment
+            )
+            
+            this.events()
         })
     }
 
