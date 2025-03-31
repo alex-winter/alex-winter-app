@@ -54,6 +54,10 @@ export class Component extends HTMLElement
 
     }
 
+    rootQuery(query) {
+        return document.querySelector(query)
+    }
+
     query(query) {
         return this.shadow.querySelector(query)
     }

@@ -6,9 +6,21 @@ export class TodoItemEditFormComponent extends Component
         return /*html*/`
             <div>
                 <form action="">
-                    <input type="text">
+                    <input  type="text" name="name">
                 </form>
             </div>
         `
+    }
+
+    events () {
+        this.keyup('[name="name"]', (e) => {
+            window.dispatchEvent(new CustomEvent('change', {
+                detail: {
+                    todoItem: e.target.value,
+                },
+                bubbles: true, 
+                composed: true,
+            }))
+        })
     }
 }

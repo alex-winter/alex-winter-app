@@ -1,8 +1,18 @@
 import { Component } from "../../component.js";
 import { DataRepository } from "../../services/data-repository.js";
+import { useState } from "../../services/state.js";
 
 export class TodoRowComponent extends Component
 {
+    constructor () {
+        super()
+
+        const [todoItem, setTodoItem] = useState({})
+
+        this.todoItem = todoItem
+        this.setTodoItem = setTodoItem
+    }
+
     styles () {
         return /*css*/`
             .row:hover {
@@ -51,9 +61,7 @@ export class TodoRowComponent extends Component
                             Edit ${this.props.item.name}
                         </div>
 
-                        <todo-item-edit-form-component slot="content">
-                            <todo-item-edit-form-component></todo-item-edit-form-component>
-                        </todo-item-edit-form-component>
+                        <todo-item-edit-form-component slot="content"></todo-item-edit-form-component>
 
                         <div slot="footer">
                             <button class="primary button" slot="footer">Save</button>
@@ -61,6 +69,13 @@ export class TodoRowComponent extends Component
                     </modal-basic-component>
                 `
             )
+        })
+
+        console.log(this.rootQuery('todo-item-edit-form-component'))
+
+        this.rootQuery('todo-item-edit-form-component')?.addEventListener('change', (e) => {
+            console.log(e.detail.todoItem)
+            this.setTodoItem(e.detail.todoItem)
         })
     }
 }
