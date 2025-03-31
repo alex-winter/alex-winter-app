@@ -9,12 +9,12 @@ import { DeleteButtonComponent } from './components/generic/delete-button-compon
 import { TodoRowComponent } from './components/todo/todo-row-component.js'
 import { ModalComponent } from './components/generic/modal/modal-component.js'
 import { TodoItemEditFormComponent } from './components/todo/todo-item-edit-form-component.js'
-import { ModalHeaderContentFooterComponent } from './components/generic/modal/modal-header-content-footer-component.js'
+import { ModalBasicComponent } from './components/generic/modal/modal-header-content-footer-component.js'
 
 DeleteButtonComponent.load()
 
 ModalComponent.load()
-ModalHeaderContentFooterComponent.load()
+ModalBasicComponent.load()
 
 NavigationMenuComponent.load()
 WidgetCardComponent.load()

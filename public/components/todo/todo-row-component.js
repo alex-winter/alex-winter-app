@@ -49,21 +49,19 @@ export class TodoRowComponent extends Component
             this.appendTemplate(
                 document.body,
                 /*html*/`
-                    <modal-component>
-                        <modal-header-content-footer-component>   
-                            
-                            <div slot="header">
-                                Edit ${this.props.item.name}
-                            </div>
+                    <modal-basic-component>   
+                        <div slot="header">
+                            Edit ${this.props.item.name}
+                        </div>
 
-                            <todo-item-edit-form-component slot="content"></todo-item-edit-form-component>
+                        <todo-item-edit-form-component slot="content">
+                            <todo-item-edit-form-component></todo-item-edit-form-component>
+                        </todo-item-edit-form-component>
 
-                            <div slot="footer">
-                                <button class="primary button" slot="footer">Save</button>
-                            </div>
-
-                        </modal-header-content-footer-component>
-                    </modal-component>
+                        <div slot="footer">
+                            <button class="primary button" slot="footer">Save</button>
+                        </div>
+                    </modal-basic-component>
                 `
             )
         })

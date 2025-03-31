@@ -1,6 +1,6 @@
 import { Component } from "../../../component.js";
 
-export class ModalHeaderContentFooterComponent extends Component
+export class ModalBasicComponent extends Component
 {
     styles () {
         return /*css*/`
@@ -10,7 +10,7 @@ export class ModalHeaderContentFooterComponent extends Component
 
     template () {
         return /*html*/`
-            <div>
+            <modal-component>
                 <div class="header">
                     <slot name="header">
                 </div>
