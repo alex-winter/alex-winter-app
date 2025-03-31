@@ -28,7 +28,7 @@ export class TodoRowComponent extends Component
                     <p>${data.name}</p>
                 </div>
                 <div class="flex-1 flex-row align-center justify-end gap-2">
-                    <button id="edit" class="button warning"><i class="fa-solid fa-pen"></i></button>
+                    <edit-button-component></edit-button-component>
                     <delete-button-component></delete-button-component>
                 </div>
             </div>
@@ -41,7 +41,7 @@ export class TodoRowComponent extends Component
             this.remove()
         })
 
-        this.click('#edit', () => {
+        this.click('edit-button-component', () => {
             this.appendTemplate(
                 document.body,
                 /*html*/`
