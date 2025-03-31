@@ -3,10 +3,6 @@ import { DataRepository } from "../../services/data-repository.js";
 
 export class TodoRowComponent extends Component
 {
-    constructor () {
-        super()
-    }
-
     styles () {
         return /*css*/`
             .row:hover {

@@ -2,10 +2,6 @@ import { Component } from "../component.js"
 
 export class DateTimeComponent extends Component
 {
-    constructor () {
-        super()
-    }
-
     styles() {
         return /*css*/`
             .time {

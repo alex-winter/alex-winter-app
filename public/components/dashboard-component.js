@@ -2,12 +2,6 @@ import { Component } from "../component.js";
 
 export class DashboardComponent extends Component
 {
-    todoData = []
-
-    constructor () {
-        super()
-    }
-
     styles() {
         return /*css*/`
             :root {
