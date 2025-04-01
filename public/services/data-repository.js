@@ -4,10 +4,6 @@ export class DataRepository
 {
     data = []
 
-    constructor () {
-        
-    }
-
     static toDataUuidTagged(item) {
         return {
             dataUuid: generateUUID(), 

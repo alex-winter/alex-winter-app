@@ -5,7 +5,10 @@ export class TodoComponent extends Component
 {
     styles () {
         return /*css*/`
-           
+           .listing {
+            max-height: 300px;
+            overflow-y: scroll;
+           }
         `
     }
 
@@ -41,14 +44,19 @@ export class TodoComponent extends Component
 
     events () {
         this.keyUpEnter('input', (e) => {
-            const newItem = TodoRepository.add({name: e.target.value})
+            const data = {name: e.target.value}
 
-            TodoRepository.persist(newItem)
+            const item = TodoRepository.add(data)
+            TodoRepository.persist(item)
+
+            const listing = this.query('.listing')
 
             this.appendTemplate(
-                this.query('.listing'),
-                this.itemToComponent(newItem)
+                listing,
+                this.itemToComponent(item)
             )
+
+            this.scrollToBottom(listing)
 
             e.target.value = ''
         })

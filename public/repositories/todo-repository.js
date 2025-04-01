@@ -30,7 +30,8 @@ export class TodoRepository
     }
 
     static add(...items) {
-        return repository.add(...items)
+        const added = repository.add(...items)
+        return added.length > 1 ? added : added[0]
     }
 
     static remove(...items) {

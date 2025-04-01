@@ -1,4 +1,5 @@
 import { Dom } from "./services/dom.js";
+import { escapeHTML, escapeHTMLInObject } from "./services/escape-html.js";
 import { isJSON } from "./services/isJson.js";
 import { isURLEncoded } from "./services/isURLEncoded.js";
 
@@ -22,9 +23,11 @@ export class Component extends HTMLElement
             if (isURLEncoded(value)) {
                 value = decodeURIComponent(value)
             }
-        
+
             if (isJSON(value)) {
-                value = JSON.parse(value)
+                value = escapeHTMLInObject(JSON.parse(value))
+            } else if (typeof value === 'string') {
+                value = escapeHTML(value)
             }
         
             this.props[key] = value
@@ -95,6 +98,15 @@ export class Component extends HTMLElement
             } else {
                 element.addEventListener(eventKey, event)
             }
+        })
+    }
+
+    scrollToBottom (element) {
+        requestAnimationFrame(() => {
+            element.scrollTo({ 
+                top: element.scrollHeight, 
+                behavior: "smooth" 
+            })
         })
     }
 
