@@ -1,57 +1,49 @@
 import { generateUUID } from "./generate-uuid.js"
 
-const dataRepository = {
-    todoItems: []
-}
-
 export class DataRepository
 {
+    data = []
+
     constructor () {
-        throw new Error('Do not construct')
+        
     }
 
-    static map(items) {
-        return items.map(item => ({dataUuid: generateUUID(), ...item}))
-    }
-
-    static async fetchTodoItems() {
-        const response = await fetch('/api/todo')
-        const source = await response.json()
-
-        dataRepository.todoItems = DataRepository.map(source)
-    }
-
-    static async persistTodoItem(item) {
-        const response = await fetch('/api/todo', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(item)
-        })
-        const source = await response.json()
-
-        dataRepository.todoItems = DataRepository.map(source)
-    }
-
-    static getTodoItems() {
-        return dataRepository.todoItems
-    }
-
-    static addTodoItem(item) {
-        const newItem = {
+    static toDataUuidTagged(item) {
+        return {
             dataUuid: generateUUID(), 
-            ...item
+            ...item,
         }
-
-        dataRepository.todoItems.push(newItem)
-
-        return newItem
     }
 
-    static removeTodoItem(dataUuid) {
-        dataRepository.todoItems = dataRepository.todoItems.filter(
-            item => item.dataUuid !== dataUuid
+    static map(...items) {
+        return items.map(
+            DataRepository.toDataUuidTagged
         )
+    }
+
+    add(...items) {
+        const mapped = DataRepository.map(...items)
+
+        this.data.push(
+            ...mapped
+        )
+
+        return mapped
+    }
+
+    getAll() {
+        return this.data
+    }
+
+    remove(...itemsToRemove) {
+        for (let itemToRemove of itemsToRemove) {
+            const index = this.data.findIndex(
+                item => item.dataUuid === itemToRemove.dataUuid
+            )
+
+            if (index !== -1) {
+                this.data.splice(index, 1);
+            }
+        }
     }
 }

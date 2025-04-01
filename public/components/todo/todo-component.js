@@ -1,5 +1,5 @@
 import { Component } from "../../component.js";
-import { DataRepository } from "../../services/data-repository.js";
+import { TodoRepository } from "../../repositories/todo-repository.js";
 
 export class TodoComponent extends Component
 {
@@ -19,11 +19,11 @@ export class TodoComponent extends Component
     }
 
     async before() {
-        await DataRepository.fetchTodoItems()
+        await TodoRepository.fetch()
     }
 
     template () {
-        const items = DataRepository.getTodoItems()
+        const items = TodoRepository.getAll()
             .map(this.itemToComponent.bind(this))
             .join('')
 
@@ -41,9 +41,9 @@ export class TodoComponent extends Component
 
     events () {
         this.keyUpEnter('input', (e) => {
-            const newItem = DataRepository.addTodoItem({name: e.target.value})
+            const newItem = TodoRepository.add({name: e.target.value})
 
-            DataRepository.persistTodoItem()
+            TodoRepository.persist(newItem)
 
             this.appendTemplate(
                 this.query('.listing'),

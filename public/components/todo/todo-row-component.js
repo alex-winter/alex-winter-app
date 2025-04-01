@@ -1,6 +1,5 @@
 import { Component } from "../../component.js";
-import { Console } from "../../services/console.js";
-import { DataRepository } from "../../services/data-repository.js";
+import { TodoRepository } from "../../repositories/todo-repository.js";
 
 export class TodoRowComponent extends Component
 {
@@ -42,7 +41,7 @@ export class TodoRowComponent extends Component
 
     events() {
         this.click('delete-button-component', () => {
-            DataRepository.removeTodoItem(this.props.item.dataUuid)
+            TodoRepository.remove(this.props.item)
            
             this.remove()
         })

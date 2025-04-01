@@ -1,5 +1,5 @@
 import { Component } from "../../component.js";
-import { Console } from "../../services/console.js";
+import { TodoRepository } from "../../repositories/todo-repository.js";
 
 export class TodoModalNewComponent extends Component
 {
@@ -22,6 +22,9 @@ export class TodoModalNewComponent extends Component
     events () {
         this.click('save-button-component', () => {
             const todoItem = this.query('todo-item-edit-form-component').getTodoItem()
+
+            TodoRepository.add(todoItem)
+            TodoRepository.persist(todoItem)
 
             this.query('modal-basic-component').close()
         })
