@@ -1,7 +1,17 @@
 import { Component } from "../../component.js";
+import { useState } from "../../services/state.js";
 
 export class TodoItemEditFormComponent extends Component
 {
+    constructor () {
+        super()
+
+        const [value, set, get] = useState({name: ''})
+        this.todoItem = value
+        this.setTodoItem = set
+        this.getTodoItem = get
+    }
+
     template() {
         return /*html*/`
             <div>
@@ -14,13 +24,7 @@ export class TodoItemEditFormComponent extends Component
 
     events () {
         this.keyup('[name="name"]', (e) => {
-            window.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    todoItem: e.target.value,
-                },
-                bubbles: true, 
-                composed: true,
-            }))
+            this.setTodoItem({name: e.target.value})
         })
     }
 }

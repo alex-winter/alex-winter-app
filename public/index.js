@@ -11,6 +11,7 @@ import { ModalComponent } from './components/generic/modal/modal-component.js'
 import { TodoItemEditFormComponent } from './components/todo/todo-item-edit-form-component.js'
 import { ModalBasicComponent } from './components/generic/modal/modal-header-content-footer-component.js'
 import { EditButtonComponent } from './components/generic/buttons/edit-button-component copy.js'
+import { TodoModalNewComponent } from './components/todo/todo-modal-new-component.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
@@ -27,6 +28,7 @@ DateTimeComponent.load()
 TodoComponent.load()
 TodoRowComponent.load()
 TodoItemEditFormComponent.load()
+TodoModalNewComponent.load()
 
 const router = new Router({
 

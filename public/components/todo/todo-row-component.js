@@ -1,16 +1,11 @@
 import { Component } from "../../component.js";
+import { Console } from "../../services/console.js";
 import { DataRepository } from "../../services/data-repository.js";
-import { useState } from "../../services/state.js";
 
 export class TodoRowComponent extends Component
 {
     constructor () {
         super()
-
-        const [todoItem, setTodoItem] = useState({})
-
-        this.todoItem = todoItem
-        this.setTodoItem = setTodoItem
     }
 
     styles () {
@@ -55,27 +50,8 @@ export class TodoRowComponent extends Component
         this.click('edit-button-component', () => {
             this.appendTemplate(
                 document.body,
-                /*html*/`
-                    <modal-basic-component>   
-                        <div slot="header">
-                            Edit ${this.props.item.name}
-                        </div>
-
-                        <todo-item-edit-form-component slot="content"></todo-item-edit-form-component>
-
-                        <div slot="footer">
-                            <button class="primary button" slot="footer">Save</button>
-                        </div>
-                    </modal-basic-component>
-                `
+                /*html*/`<todo-modal-new-component data-item="${this.propEncode(this.props.item)}"></todo-modal-new-component>`
             )
-        })
-
-        console.log(this.rootQuery('todo-item-edit-form-component'))
-
-        this.rootQuery('todo-item-edit-form-component')?.addEventListener('change', (e) => {
-            console.log(e.detail.todoItem)
-            this.setTodoItem(e.detail.todoItem)
         })
     }
 }

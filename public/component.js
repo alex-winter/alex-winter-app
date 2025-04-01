@@ -102,6 +102,18 @@ export class Component extends HTMLElement
 
     }
 
+    emit(eventKey) {
+        this.dispatchEvent(
+            new CustomEvent(
+                eventKey,
+                {
+                    bubbles: true,
+                    cancelable: true,
+                }
+            )
+        )
+    }
+
     connectedCallback() {
         this.before().then(() => {
 

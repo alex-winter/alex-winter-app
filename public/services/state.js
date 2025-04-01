@@ -3,17 +3,18 @@ let states = []
 
 export function useState(initValue) {
   const id = ++callCount
-  
-  if (states[id]) return states[id]
-  
-  const setValue = (newValue) => {
-    states[id][0] = newValue
-    reRender()
-  }
-  
-  let tuple = [initValue, setValue]
-  
-  states.push(tuple)
 
-  return tuple
+  if (!states[id]) {
+    states[id] = [
+      {value: initValue}, 
+      (newValue) => {
+        states[id][0].value = newValue
+      },
+      () => {
+        return states[id][0].value
+      }
+    ]
+  }
+
+  return states[id]
 }
