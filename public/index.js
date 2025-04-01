@@ -12,9 +12,11 @@ import { TodoItemEditFormComponent } from './components/todo/todo-item-edit-form
 import { ModalBasicComponent } from './components/generic/modal/modal-header-content-footer-component.js'
 import { EditButtonComponent } from './components/generic/buttons/edit-button-component copy.js'
 import { TodoModalNewComponent } from './components/todo/todo-modal-new-component.js'
+import { SaveButtonComponent } from './components/generic/buttons/save-button-component.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
+SaveButtonComponent.load()
 
 ModalComponent.load()
 ModalBasicComponent.load()

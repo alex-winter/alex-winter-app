@@ -24,6 +24,11 @@ export class ModalBasicComponent extends Component
         `
     }
 
+    close() {
+        const modal = this.query('modal-component')
+        modal.close()
+    }
+
     events () {
       
     }

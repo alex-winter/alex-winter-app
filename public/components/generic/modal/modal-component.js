@@ -4,7 +4,7 @@ export class ModalComponent extends Component
 {
     styles () {
         return /*css*/`
-            .modal-container {
+            :host {
                 position: fixed;
                 display: block;
                 top: 0;
@@ -27,7 +27,11 @@ export class ModalComponent extends Component
                 border-radius: 2px;
                 border: 1px solid rgba(0, 0, 0, 0.2);
                 opacity: 0;
-                animation: zoomIn 0.3s ease-in forwards;
+                animation: zoomIn 0.1s ease-in forwards;
+            }
+
+            .close {
+                animation: zoomOut 0.1s ease-in forwards;
             }
 
             @keyframes fadeIn {
@@ -39,7 +43,23 @@ export class ModalComponent extends Component
                 from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
                 to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
             }
+
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            @keyframes zoomOut {
+                from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                to { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            }
         `
+    }
+
+    close () {
+        this.query('.modal').classList.add('close')
+        
+        setTimeout(this.remove.bind(this), 300)
     }
 
     template () {

@@ -13,17 +13,17 @@ export class TodoModalNewComponent extends Component
                 <todo-item-edit-form-component slot="content"></todo-item-edit-form-component>
 
                 <div slot="footer">
-                    <button id="save" class="primary button" slot="footer">Save</button>
+                    <save-button-component></save-button-component>
                 </div>
             </modal-basic-component>
         `
     }
 
     events () {
-        this.click('#save', () => {
+        this.click('save-button-component', () => {
             const todoItem = this.query('todo-item-edit-form-component').getTodoItem()
 
-            Console.varDump(todoItem)
+            this.query('modal-basic-component').close()
         })
     }
 }
