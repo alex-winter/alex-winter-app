@@ -34,9 +34,9 @@ TodoModalNewComponent.load()
 
 const router = new Router({
 
-    '/': DashboardComponent,
+    '/example/': DashboardComponent,
     
-    '/about': AboutMeComponent,
+    '/example/about': AboutMeComponent,
 
 })
 
