@@ -45,6 +45,10 @@
     padding-right: var(--spacing-unit-4);
 }
 
+.mt-2 {
+    margin-top: var(--spacing-unit-2);
+}
+
 .mt-3 {
     margin-top: var(--spacing-unit-3);
 }

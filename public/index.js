@@ -13,6 +13,7 @@ import { ModalBasicComponent } from './components/generic/modal/modal-header-con
 import { EditButtonComponent } from './components/generic/buttons/edit-button-component copy.js'
 import { TodoModalNewComponent } from './components/todo/todo-modal-new-component.js'
 import { SaveButtonComponent } from './components/generic/buttons/save-button-component.js'
+import { RecursiveUlComponent } from './components/generic/tree/recursive-ul.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
@@ -20,6 +21,8 @@ SaveButtonComponent.load()
 
 ModalComponent.load()
 ModalBasicComponent.load()
+
+RecursiveUlComponent.load()
 
 NavigationMenuComponent.load()
 WidgetCardComponent.load()
