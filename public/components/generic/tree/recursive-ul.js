@@ -34,21 +34,22 @@ export class RecursiveUlComponent extends Component {
         `
     }
 
-    template () {
-        const data = this.props.data
-
+    recursiveTemplate(data) {
         return /*html*/`
             <ul>
                 ${forEach(data, item => /*html*/`
                     <li>
                         ${item.name}
-                        ${when(
-                            item.children, 
-                            /*html*/`<recursive-ul-component data-data="${this.propEncode(item.children)}"></recursive-ul-component>`
-                        )}
+                        ${item.children ? this.recursiveTemplate(item.children) : ''}
                     </li>    
                 `)}
             </ul>
         `
+    }
+
+    template () {
+        const data = this.props.data
+
+        return this.recursiveTemplate(data)
     }
 }

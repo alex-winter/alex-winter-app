@@ -128,7 +128,6 @@ export class Component extends HTMLElement
 
     connectedCallback() {
         this.before().then(() => {
-
             const style = Dom.style(this.styles())
             
             this.shadow.appendChild(style)
@@ -166,7 +165,7 @@ export class Component extends HTMLElement
      * @return void
      */
     static load()
-    {
+    {        
         customElements.define(
             this.getCustomElementName(),
             this
