@@ -1,18 +1,5 @@
 import { Component } from "../../../component.js"
-
-/**
- * 
- * @param {any[]} data 
- * @param {item => string} fn 
- * @returns string
- */
-function forEach(data, fn) {
-    return data.map(fn).join('')
-}
-
-function when(statement, template) {
-    return statement ? template : ''
-}
+import { forEach } from "../../../services/template-functions.js"
 
 export class RecursiveUlComponent extends Component {
 
