@@ -16,5 +16,8 @@ export function useState(initValue) {
     ]
   }
 
-  return states[id]
+  return [
+    states[id][1],
+    states[id][2]
+  ]
 }

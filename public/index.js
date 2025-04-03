@@ -16,12 +16,16 @@ import { SaveButtonComponent } from './components/generic/buttons/save-button-co
 import { RecursiveUlComponent } from './components/generic/tree/recursive-ul.js'
 import { SimpleUploadComponent } from './components/generic/file/simple-upload.js'
 import { FileUploadButtonComponent } from './components/generic/buttons/file-upload-button-component copy.js'
+import { FileListingComponent } from './components/generic/file/file-listing.js'
+import { FilesComponent } from './components/generic/file/files-component.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
 SaveButtonComponent.load()
 FileUploadButtonComponent.load()
 
+FilesComponent.load()
+FileListingComponent.load()
 SimpleUploadComponent.load()
 
 ModalComponent.load()

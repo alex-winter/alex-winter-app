@@ -13,15 +13,19 @@ export class SimpleUploadComponent extends Component
     template () {
         return /*html*/`
             <div>
-                <input type="file">
+                <input type="file" multiple>
                 <file-upload-button-component data-text="Upload File"></file-upload-button-component>
             </div>
         `
     }
 
     events () {
-        this.click('file-upload-button-component', () => {
-            this.query('input').click()
+        const input = this.query('input')
+
+        this.click('file-upload-button-component', input.click.bind(input))
+
+        input.addEventListener('change', () => {
+            this.emit('change', Array.from(input.files))
         })
     }
 }

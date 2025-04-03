@@ -114,13 +114,14 @@ export class Component extends HTMLElement
 
     }
 
-    emit(eventKey) {
+    emit(eventKey, detail = undefined) {
         this.dispatchEvent(
             new CustomEvent(
                 eventKey,
                 {
                     bubbles: true,
                     cancelable: true,
+                    detail
                 }
             )
         )
