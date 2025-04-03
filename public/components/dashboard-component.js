@@ -58,7 +58,7 @@ export class DashboardComponent extends Component
                     </div>
                     <div class="flex-1">
                         <widget-card-component>
-                            here
+                            <simple-upload-component></simple-upload-component>
                         </widget-card-component>
                     </div>
                 </div>

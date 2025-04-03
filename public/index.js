@@ -14,10 +14,15 @@ import { EditButtonComponent } from './components/generic/buttons/edit-button-co
 import { TodoModalNewComponent } from './components/todo/todo-modal-new-component.js'
 import { SaveButtonComponent } from './components/generic/buttons/save-button-component.js'
 import { RecursiveUlComponent } from './components/generic/tree/recursive-ul.js'
+import { SimpleUploadComponent } from './components/generic/file/simple-upload.js'
+import { FileUploadButtonComponent } from './components/generic/buttons/file-upload-button-component copy.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
 SaveButtonComponent.load()
+FileUploadButtonComponent.load()
+
+SimpleUploadComponent.load()
 
 ModalComponent.load()
 ModalBasicComponent.load()
