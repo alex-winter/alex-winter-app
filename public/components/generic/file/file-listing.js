@@ -10,8 +10,37 @@ export class FileListingComponent extends Component
 
         const [set, get] = useState([])
 
+        this.nameCount = []
+
         this.setFiles = (...files) => {
-            set([...get(), ...files])
+            /** @type {Array} existing */
+            const existing = get()
+            set([
+                ...existing, 
+                ...files.map(upload => {
+                    this.nameCount[upload.name] = 0;
+
+                    const extIndex = upload.name.lastIndexOf(".")
+                    const hasExtension = extIndex > 0
+                    
+                    const baseName = hasExtension ? upload.name.slice(0, extIndex) : upload.name
+                    const extension = hasExtension ? upload.name.slice(extIndex) : ''
+                
+                    let fileName = upload.name
+                
+                    if (existing.find(f => f.name === upload.name)) {
+                        const count = ++this.nameCount[upload.name]
+                        fileName = hasExtension 
+                            ? `${baseName} (${count})${extension}` 
+                            : `${upload.name} (${count})`;
+                    }
+                
+                    return {
+                        name: fileName,
+                        size: upload.size
+                    };
+                })
+            ])
         }
         this.getFiles = get 
     }
@@ -37,7 +66,6 @@ export class FileListingComponent extends Component
     }
 
     fileTemplate (file) {
-        console.log(file)
         return /*html*/`
             <div class="row p-2">
                 <i class="fa-solid fa-file"></i> ${file.name}

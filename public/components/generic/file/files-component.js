@@ -2,10 +2,6 @@ import { Component } from "../../../component.js";
 
 export class FilesComponent extends Component
 {
-    constructor () {
-        super()
-    }
-
     template () {
         return /*html*/`
             <div>
