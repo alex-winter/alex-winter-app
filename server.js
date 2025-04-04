@@ -34,6 +34,10 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, 'public', 'website.html'))
 })
 
+app.get('/code-snippet/{fileName}', (request, response) => {
+  response.sendFile(path.join(__dirname, 'public', 'code-snippet', request.params.fileName))
+})
+
 app.get('/example*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'example.html'))
 })

@@ -5,7 +5,9 @@
 
 .flex-column {
     display: flex;
-    flex-direction: column;
+}
+.flex-fill-height {
+    align-items: stretch;
 }
 
 .flex-1 {

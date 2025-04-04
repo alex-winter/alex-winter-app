@@ -65,7 +65,14 @@ export class DashboardComponent extends Component
                 <div class="flex-row gap-2 mt-3">
                     <div class="flex-1">
                         <widget-card-component>
-                            <code-component></code-component>
+                            <div class="flex-column flex-fill-height gap-2">
+                                <div class="flex-1">
+                                    <code-component data-title="counter-component.js" data-src="/code-snippets/example2.js"></code-component>
+                                </div>
+                                <div class="flex-1">
+                                    <code-component data-title="example-component.js" data-src="/code-snippets/example.js"></code-component>
+                                </div>
+                            </div>
                         </widget-card-component>
                     </div>
                 </div>

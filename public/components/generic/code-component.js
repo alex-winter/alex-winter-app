@@ -11,11 +11,16 @@ export class CodeComponent extends Component {
                 border-radius: 5px;
                 font-family: "Courier New", monospace;
                 overflow-x: auto;
+                height: 100%;
+                box-sizing: border-box;
+            }
+
+            h3 {
+                color: white;
             }
 
             .code-container {
                 display: flex;
-                margin: 0;
             }
 
             .line-numbers {
@@ -35,73 +40,28 @@ export class CodeComponent extends Component {
         `;
     }
 
+    async before () {
+        const response = await fetch(this.props.src)
+        const file = await response.text()
+
+        this.file = file
+    }
+
     template() {
-        const file1 = `import { Component } from "../component.js"
-
-class ExampleComponent extends Component {
-    styles () {
-        return /*css*/\`
-            h1 {
-                font-family: comic-sans;
-            }
-        \`
-    }
-
-    template () {
-        return /*html*/\`
-            <div>
-                <h1>Hello World</h1>
-                <p>Welcome to Alex Js</p>
-                <counter-component></counter-component>
-                <button>Update Counter</button>
-            </div>
-        \`
-    }
-
-    events () {
-        this.click('button', () => {
-            this.query('counter-component').add(1)   
-        })
-    }
-}`;
-
-const file2 = `import { Component } from "../component.js"
-import { useState } from 'useState.js'
-
-class CounterComponent extends Component {
-    constructor () {
-        const [get, set] = useState(0)
-
-        this.add = (value) => {
-            set(get() + value)    
-        }
-
-        this.getCount = get
-    }
-
-    template () {
-        return /*html*/\`
-            <div>
-                <p>\${this.getCount()}</p>
-            </div>
-        \`
-    }
-}`;
-
         return /*html*/`
-            <pre class="code-container">
-                <code class="line-numbers">${this.getLineNumbers(file1)}</code>
-                <code class="code-content">${this.highlightCode(file1)}</code>
-            </pre>
-            <pre class="code-container mt-2">
-                <code class="line-numbers">${this.getLineNumbers(file2)}</code>
-                <code class="code-content">${this.highlightCode(file2)}</code>
+            <h3>${this.props?.title || ''}</h3>
+            <pre class="code-container mt-3">
+                <code class="line-numbers">${this.getLineNumbers(this.file)}</code>
+                <code class="code-content">${this.highlightCode(this.file)}</code>
             </pre>
         `;
     }
 
     getLineNumbers(code) {
-        return code.split("\n").map((_, i) => i + 1).join("\n");
+        return code
+            .split("\n")
+            .map((_, i) => i + 1)
+            .join("\n");
     }
 
     highlightCode(code) {
