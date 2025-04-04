@@ -26,7 +26,7 @@ export class Component extends HTMLElement
 
             if (isJSON(value)) {
                 value = escapeHTMLInObject(JSON.parse(value))
-            } else if (typeof value === 'string') {
+            } else if (typeof value === 'string' && key !== 'src') {
                 value = escapeHTML(value)
             }
         

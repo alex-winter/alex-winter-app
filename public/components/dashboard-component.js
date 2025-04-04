@@ -62,6 +62,13 @@ export class DashboardComponent extends Component
                         </widget-card-component>
                     </div>
                 </div>
+                <div class="flex-row gap-2 mt-3">
+                    <div class="flex-1">
+                        <widget-card-component>
+                            <code-component></code-component>
+                        </widget-card-component>
+                    </div>
+                </div>
             </div>
         `
     }

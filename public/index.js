@@ -18,6 +18,7 @@ import { SimpleUploadComponent } from './components/generic/file/simple-upload.j
 import { FileUploadButtonComponent } from './components/generic/buttons/file-upload-button-component copy.js'
 import { FileListingComponent } from './components/generic/file/file-listing.js'
 import { FilesComponent } from './components/generic/file/files-component.js'
+import { CodeComponent } from './components/code-component.js'
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
@@ -27,6 +28,8 @@ FileUploadButtonComponent.load()
 FilesComponent.load()
 FileListingComponent.load()
 SimpleUploadComponent.load()
+
+CodeComponent.load()
 
 ModalComponent.load()
 ModalBasicComponent.load()
