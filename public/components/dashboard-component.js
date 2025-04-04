@@ -73,6 +73,11 @@ export class DashboardComponent extends Component
                                     <code-component data-title="example-component.js" data-src="/code-snippets/example.js"></code-component>
                                 </div>
                             </div>
+                            <div class="flex-column flex-fill-height gap-2">
+                                <div class="flex-1">
+                                    <code-component data-title="index.html" data-src="/code-snippets/index.html"></code-component>
+                                </div>
+                            </div>
                         </widget-card-component>
                     </div>
                 </div>

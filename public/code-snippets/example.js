@@ -12,7 +12,6 @@ class ExampleComponent extends Component {
     template () {
         return /*html*/`
             <div>
-                <h1>Hello World</h1>
                 <p>Welcome to Alex Js</p>
                 <counter-component></counter-component>
                 <button>Update Counter</button>
