@@ -145,9 +145,21 @@ export class Component extends HTMLElement
         })
     }
 
+    renderTemplate(template, context) {
+        return template.replace(/{{\s*([^}]+)\s*}}/g, (match, logic) => {
+            const run = new Function(
+                logic.trim()
+            )
+
+            return run.bind(this)()
+        });
+    }
+
     createFragment() {
         return document.createRange().createContextualFragment(
-            this.template()
+            this.renderTemplate(
+                this.template()
+            )
         )
     }
 

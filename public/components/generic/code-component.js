@@ -1,4 +1,7 @@
 import { Component } from "../../component.js";
+import { getLineNumbers } from "../../services/code-lines.js";
+import { CodeHighlighter } from "../../services/CodeHighlighter.js";
+import { Http } from "../../services/Http.js";
 
 export class CodeComponent extends Component {
     styles() {
@@ -46,75 +49,19 @@ export class CodeComponent extends Component {
     }
 
     async before () {
-        const response = await fetch(this.props.src);
-        const file = await response.text();
-
-        this.file = file;
-        this.language = this.detectLanguage(this.props.src, file);
-    }
-
-    detectLanguage(src, file) {
-        if (src.endsWith(".html") || file.trim().startsWith("<!DOCTYPE html") || file.trim().startsWith("<html")) {
-            return "html";
-        }
-        return "js"; // default to js
+        this.file = await Http.getFile(this.props.src)
     }
 
     template() {
-        const highlighted = this.language === "html"
-            ? this.highlightHTML(this.file)
-            : this.highlightJavaScript(this.file);
+        const file = this.file
+        const highlighted = CodeHighlighter.highlight(file)
 
         return /*html*/`
             <h3>${this.props?.title || ''}</h3>
             <pre class="code-container mt-3">
-                <code class="line-numbers">${this.getLineNumbers(this.file)}</code>
+                <code class="line-numbers">${ getLineNumbers(file) }</code>
                 <code class="code-content">${highlighted}</code>
             </pre>
         `;
-    }
-
-    getLineNumbers(code) {
-        return code
-            .split("\n")
-            .map((_, i) => i + 1)
-            .join("\n");
-    }
-
-    highlightJavaScript(code) {
-        code = code.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-        const keywords = /\b(const|let|var|function|return|if|else|for|while|switch|case|break|new|class|extends|super|import|from|export|default|try|catch|finally|throw|async|await)\b/g;
-        const numbers = /\b\d+(\.\d+)?\b/g;
-        const functions = /\b([a-zA-Z_]\w*)\s*(?=\()/g;
-
-        return code
-            .split("\n")
-            .map(line =>
-                line
-                    .replace(keywords, '<span class="keyword">$&</span>')  
-                    .replace(numbers, '<span class="number">$&</span>')  
-                    .replace(functions, '<span class="function">$1</span>')
-            )
-            .join("\n");
-    }
-
-    highlightHTML(code) {
-        code = code.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-        const tagPattern = /(&lt;\/?)([a-zA-Z0-9-]+)(.*?)(\/?&gt;)/g;
-        const attrPattern = /([a-zA-Z\-:]+)=(".*?"|'.*?')/g;
-        const commentPattern = /(&lt;!--[\s\S]*?--&gt;)/g;
-
-        return code
-            .split("\n")
-            .map(line => {
-                line = line.replace(commentPattern, '<span class="comment">$1</span>');
-                return line.replace(tagPattern, (match, open, tagName, attrs, close) => {
-                    const parsedAttrs = attrs.replace(attrPattern, '<span class="attr-name">$1</span>=<span class="attr-value">$2</span>');
-                    return `${open}<span class="tag">${tagName}</span>${parsedAttrs}${close}`;
-                });
-            })
-            .join("\n");
     }
 }

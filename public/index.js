@@ -19,6 +19,11 @@ import { FileUploadButtonComponent } from './components/generic/buttons/file-upl
 import { FileListingComponent } from './components/generic/file/file-listing.js'
 import { FilesComponent } from './components/generic/file/files-component.js'
 import { CodeComponent } from './components/generic/code-component.js'
+import { match } from './services/match.js'
+import { Component } from './component.js'
+
+window.match = match
+window.Component = Component
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()
@@ -69,3 +74,4 @@ window.addEventListener('popstate', () => {
 window.addEventListener('load', () => {
     router.renderContent(window.location.pathname || '/home')
 })
+
