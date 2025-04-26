@@ -1,3 +1,5 @@
+import './core.css'
+
 import { Router } from './services/router.js'
 import { NavigationMenuComponent } from "./components/navigation-menu-component.js"
 import { WidgetCardComponent } from "./components/widget-card-component.js"
@@ -19,11 +21,6 @@ import { FileUploadButtonComponent } from './components/generic/buttons/file-upl
 import { FileListingComponent } from './components/generic/file/file-listing.js'
 import { FilesComponent } from './components/generic/file/files-component.js'
 import { CodeComponent } from './components/generic/code-component.js'
-import { match } from './services/match.js'
-import { Component } from './component.js'
-
-window.match = match
-window.Component = Component
 
 DeleteButtonComponent.load()
 EditButtonComponent.load()

@@ -5,17 +5,18 @@ import { isURLEncoded } from "./services/isURLEncoded.js";
 
 export class Component extends HTMLElement
 {
-    props = {}
-    rootElementTagName = null
+    private readonly shadow: ShadowRoot
 
-    constructor () {
+    private props: {[key: string]: any} = {}
+    
+    private rootElementTagName!: string
+
+    protected constructor () {
         super()
         
         this.shadow = this.attachShadow({mode: 'open'})
 
-        const coreStyles = Dom.stylesheet('/core.css')
-
-        this.shadow.appendChild(coreStyles)
+        this.shadow.appendChild(Dom.stylesheet('/core.css'))
 
         Object.keys(this.dataset).forEach(key => {
             let value = this.dataset[key] ?? ''
@@ -34,7 +35,7 @@ export class Component extends HTMLElement
         })
     }
 
-    propEncode(data) {
+    private propEncode(data: any) {
         return encodeURIComponent(
             JSON.stringify(
                 data
@@ -42,82 +43,40 @@ export class Component extends HTMLElement
         )
     }
 
-    /**
-     * @param {string} css 
-     */
-    styles(css) {
+    protected styles(): string {
         return ''
     }
 
-    template () {
+    protected template (): string {
         throw new Error(`${this.constructor.name} missing template`)
     }
 
-    events() {
+    protected events() {}
 
-    }
-
-    rootQuery(query) {
-        return document.querySelector(query)
-    }
-
-    query(query) {
+    protected query(query: string): null | HTMLElement {
         return this.shadow.querySelector(query)
     }
 
-    /**
-     * @param {string} query 
-     * @param {(event) => void} event 
-     */
-    click(query, event) {
-        this.attachEvents('click', query, event)
-    } 
-
-    /**
-     * @param {string} query 
-     * @param {(event) => void} event 
-     */
-    keyup(query, event) {
-        this.attachEvents('keyup', query, event)
-    } 
-
-    keyUpEnter(query, event) {
-        this.attachEvents('keyup:Enter', query, event)
-    }
-
-    attachEvents (eventKey, query, event) {
-        this.shadow.querySelectorAll(query).forEach(element => {
-            if (eventKey.includes(':')) {
-                const [baseEvent, specificEvent] = eventKey.split(':');
-    
-                element.addEventListener(baseEvent, e => {
-                    if (e.key === specificEvent) {
-                        event(e)
-                    }
-                })
-            } else {
-                element.addEventListener(eventKey, event)
-            }
-        })
-    }
-
-    scrollToBottom (element) {
+    protected scrollToBottom(element: HTMLElement): void 
+    {
         requestAnimationFrame(() => {
             element.scrollTo({ 
                 top: element.scrollHeight, 
-                behavior: "smooth" 
+                behavior: 'smooth'
             })
         })
     }
 
-    async before () {
-
+    protected async before (): Promise<void> 
+    {
     }
 
-    emit(eventKey, detail = undefined) {
+    protected emit(
+        key: string, detail = undefined,
+    ): void {
         this.dispatchEvent(
             new CustomEvent(
-                eventKey,
+                key,
                 {
                     bubbles: true,
                     cancelable: true,
@@ -127,7 +86,8 @@ export class Component extends HTMLElement
         )
     }
 
-    connectedCallback() {
+    protected connectedCallback(): void
+    {
         this.before().then(() => {
             const style = Dom.style(this.styles())
             
@@ -135,7 +95,7 @@ export class Component extends HTMLElement
 
             const fragment = this.createFragment()
 
-            this.rootElementTagName = fragment.firstElementChild.tagName.toLowerCase()
+            this.rootElementTagName = (fragment.firstElementChild as HTMLElement).tagName.toLowerCase()
 
             this.shadow.appendChild(
                 fragment
@@ -145,39 +105,47 @@ export class Component extends HTMLElement
         })
     }
 
-    renderTemplate(template, context) {
-        return template.replace(/{{\s*([^}]+)\s*}}/g, (match, logic) => {
-            const run = new Function(
-                logic.trim()
-            )
+    private renderTemplate(template: string): string 
+    {
+        return template.replace(
+            /{{\s*([^}]+)\s*}}/g, 
+            (match, logic) => {
+                const run = new Function(
+                    logic.trim()
+                )
 
-            return run.bind(this)()
-        });
-    }
-
-    createFragment() {
-        return document.createRange().createContextualFragment(
-            this.renderTemplate(
-                this.template()
-            )
+                return run.bind(this)()
+            }
         )
     }
 
-    refresh() {
+    private createFragment() 
+    {
+        return document
+            .createRange()
+            .createContextualFragment(
+                this.renderTemplate(
+                    this.template()
+                )
+            )
+    }
+
+    protected refresh(): void
+    {
         this.shadow.replaceChild(
             this.createFragment(),
-            this.shadow.querySelector(this.rootElementTagName)
+            this.shadow.querySelector(this.rootElementTagName) as HTMLElement
         )
     }
 
-    appendTemplate(element, template) {
+    protected appendTemplate(
+        element: HTMLElement, 
+        template: string,
+    ): void {
         element.insertAdjacentHTML('beforeend', template)
     }
 
-    /**
-     * @return void
-     */
-    static load()
+    public static load(): void
     {        
         customElements.define(
             this.getCustomElementName(),
@@ -185,7 +153,8 @@ export class Component extends HTMLElement
         )
     }
 
-    static getCustomElementName() {
+    public static getCustomElementName(): string
+    {
         return this.name
             .replace(/([a-z])([A-Z])/g, '$1-$2')
             .toLowerCase()
